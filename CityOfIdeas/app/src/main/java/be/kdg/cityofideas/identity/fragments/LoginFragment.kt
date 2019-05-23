@@ -14,6 +14,7 @@ import be.kdg.cityofideas.R
 import be.kdg.cityofideas.drawer.PlatformFragment
 import be.kdg.cityofideas.rest.APIUtils
 import be.kdg.cityofideas.rest.ApiService
+import com.auth0.android.jwt.JWT
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -85,15 +86,19 @@ class LoginFragment : Fragment() {
                 if (response.isSuccessful) {
                     token = response.body().toString()
                     println(token)
-                    login.createUser(null,email.text.toString(),token)
-                    login.getUser()
+                    /*login.createUser(null,email.text.toString(),token)
+                    login.getUser()*/
                     val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
                     with (sharedPref.edit()) {
                         putString("token", "Bearer $token")
                         apply()
                     }
                     println(sharedPref.getString("token","leeg"))
-                    Toast.makeText(context,"U bent ingelogd, welkom!",Toast.LENGTH_LONG).show()
+                    val parsedJwt = JWT(token)
+                    val subscriptionMetaData = parsedJwt.getClaim("sub")
+                    val parsedValue = subscriptionMetaData.asString()
+                    println(parsedValue)
+                    Toast.makeText(context,"U bent ingelogd, welkom $parsedValue!",Toast.LENGTH_LONG).show()
                     fragmentManager!!.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
                         .replace(R.id.fragment_container, PlatformFragment()).addToBackStack("").commit()
                 }else{
