@@ -24,6 +24,12 @@ import retrofit2.Call
 import retrofit2.Callback
 import javax.inject.Inject
 
+/**
+ * De QR-Code wordt opgesteld door een id te zetten in Json-formaat
+ * en aan de hand van die id wordt het juiste idee opgehaald.
+ * Vb: {id : "1"}
+ */
+
 @Suppress("NULLABILITY_MISMATCH_BASED_ON_JAVA_ANNOTATIONS")
 class QRFragment : Fragment(){
 
