@@ -13,7 +13,6 @@ import android.widget.*
 import be.kdg.cityofideas.MainActivity
 import be.kdg.cityofideas.R
 import be.kdg.cityofideas.fragments.ProjectPageFragment
-import be.kdg.cityofideas.fragments.projectPageFragments.SurveysFragment
 import be.kdg.cityofideas.rest.APIUtils
 import be.kdg.cityofideas.rest.BASE_URL
 import be.kdg.cityofideas.rest.data.Answer
@@ -28,6 +27,7 @@ import com.google.android.material.textfield.TextInputEditText
 import com.google.android.material.textfield.TextInputLayout
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
+import org.jetbrains.annotations.PropertyKey
 import org.json.JSONArray
 import org.json.JSONObject
 import retrofit2.Call
@@ -37,6 +37,7 @@ import retrofit2.Call
 class SingleSurveyFragment : Fragment() {
 
     var surveyindex: Int = 0
+    var projectindex: Int = 0
     private lateinit var questions: ArrayList<Question>
     private lateinit var choices: ArrayList<QuestionChoice>
     private lateinit var requestQueue: RequestQueue
@@ -45,7 +46,6 @@ class SingleSurveyFragment : Fragment() {
     private lateinit var questionArray: JSONArray
     private lateinit var choiceArray: JSONArray
     private lateinit var viewProductLayout: LinearLayout
-    internal var jsonObject = JSONObject()
     private var optionsObj: JsonObject? = null
     private var postArray: JsonArray? = null
     private var dropdownObj: JsonObject? = null
@@ -93,8 +93,10 @@ class SingleSurveyFragment : Fragment() {
                 MainActivity().hideSoftKeyboard(it1)
             }
             sendSurvey()
+            val projectPageFragment = ProjectPageFragment()
+            projectPageFragment.projectIndex = projectindex
             fragmentManager!!.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
-                .replace(R.id.fragment_container,ProjectPageFragment()).commit()
+                .replace(R.id.fragment_container,projectPageFragment).commit()
         }
     }
 
@@ -107,7 +109,7 @@ class SingleSurveyFragment : Fragment() {
 
 
     private fun queue() {
-        val index = surveyindex+1
+        val index = surveyindex
         val query = "query{survey(id : $index){title questions{id type text choices{id text}}}}"
         val jsonObject = JSONObject()
         jsonObject.put("query", query)

@@ -15,10 +15,6 @@ class RvPlatformsAdapter(context: Context?,
                          private val listener: RvPlatformsAdapter.OnPlatformSelectedListener)
 : androidx.recyclerview.widget.RecyclerView.Adapter<RvPlatformsAdapter.MyViewHolder>() {
 
-    private val context : Context = context!!
-    private val cPicasso : PicassoTrustAll = PicassoTrustAll()
-
-
 
     class MyViewHolder(view : View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view){
         val logo : ImageView =view.findViewById(R.id.platformLogo)
@@ -41,7 +37,7 @@ class RvPlatformsAdapter(context: Context?,
         holder.titel.text = platform.name
         holder.explanationShort.text = platform.explanationShort
         holder.itemView.setOnClickListener {
-            listener.onPlatformSelected(position)
+            listener.onPlatformSelected(platform.id!!.toInt())
         }
     }
 

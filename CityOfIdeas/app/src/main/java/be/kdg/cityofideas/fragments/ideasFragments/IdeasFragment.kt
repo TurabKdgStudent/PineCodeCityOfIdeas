@@ -45,7 +45,7 @@ class IdeasFragment : Fragment() {
         queue()
 
         addIdea = view.findViewById(R.id.addIdeaButton)
-        AddIdeaHandler()
+        addIdeaHandler()
 
         rvIdeas = view.findViewById(R.id.rv_Ideas)
         rvIdeas.layoutManager = LinearLayoutManager(activity)
@@ -65,7 +65,7 @@ class IdeasFragment : Fragment() {
         }
     }
 
-    fun AddIdeaHandler(){
+    private fun addIdeaHandler(){
         val addIdeaFragment = AddIdeaFragment()
         addIdeaFragment.ideationIndex = ideationIndex
         addIdea.setOnClickListener {
@@ -76,7 +76,7 @@ class IdeasFragment : Fragment() {
     }
 
     fun queue(){
-        val index = ideationIndex+1
+        val index = ideationIndex
         val query = "query{ideation(id : $index) {ideas{id title explanationShort picture likes{id} shares{id} maincomments{id} }}}"
         val jsonObject = JSONObject()
         jsonObject.put("query", query)

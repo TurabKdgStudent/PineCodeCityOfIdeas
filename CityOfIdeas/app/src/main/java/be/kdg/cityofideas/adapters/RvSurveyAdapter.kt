@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import be.kdg.cityofideas.R
-import java.text.SimpleDateFormat
 
 class RvSurveyAdapter(val context : Context?,
                       private val surveys: ArrayList<be.kdg.cityofideas.rest.data.Survey>,
@@ -15,7 +14,6 @@ class RvSurveyAdapter(val context : Context?,
                       private val projectIndex : Int)
     : RecyclerView.Adapter<RvSurveyAdapter.MyViewHolder>() {
 
-    private val sdf = SimpleDateFormat("dd MMM yyyy")
 
     class MyViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
         val titel: TextView = view.findViewById(R.id.survey_title)
@@ -27,25 +25,21 @@ class RvSurveyAdapter(val context : Context?,
         val view = LayoutInflater.from(parent.context)
             .inflate(R.layout.rv_surveys_rv_item, parent, false)
 
-        val vHolder = RvSurveyAdapter.MyViewHolder(view)
-        return vHolder
+        return MyViewHolder(view)
     }
     override fun onBindViewHolder(holder: RvSurveyAdapter.MyViewHolder, position: Int) {
-
-
 
         val survey = surveys[position]
         holder.titel.text = survey.title
         holder.questions.text = survey.numberOfQuestions
         holder.surveyPhase.text = survey.phase
         holder.itemView.setOnClickListener {
-            listener.onSurveySelected(position)
+            listener.onSurveySelected(survey.id!!.toInt(),projectIndex)
         }
     }
-
     override fun getItemCount(): Int = surveys.size
 
     interface OnSurveySelectedListener {
-        fun onSurveySelected(surveyIndex: Int)
+        fun onSurveySelected(surveyIndex: Int,projectIndex: Int)
     }
 }

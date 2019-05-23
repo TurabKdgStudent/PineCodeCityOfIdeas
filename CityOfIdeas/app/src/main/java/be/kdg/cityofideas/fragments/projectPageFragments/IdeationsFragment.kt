@@ -59,8 +59,8 @@ class IdeationsFragment : Fragment() {
     }
 
     fun queue(){
-        val index = projectIndex+1
-        val query = "query{project(id: $index){phases{ideations{question about picture likes{id} shares{id} ideas{id}}}}}"
+        val index = projectIndex
+        val query = "query{project(id: $index){phases{ideations{id question about picture likes{id} shares{id} ideas{id}}}}}"
         val jsonObject = JSONObject()
         jsonObject.put("query", query)
 
@@ -81,6 +81,7 @@ class IdeationsFragment : Fragment() {
                         for (j in 0 until ideationArray.length()) {
                             val ideation = ideationArray.getJSONObject(j)
 
+                            val id = ideation.getString("id")
                             val question = ideation.getString("question")
                             val about = ideation.getString("about")
                             val picture = ideation.getString("picture")
@@ -88,22 +89,9 @@ class IdeationsFragment : Fragment() {
                             val shares = ideation.getJSONArray("shares").length().toString()
                             val ideas = ideation.getJSONArray("ideas").length().toString()
 
-                            ideations.add(
-                                be.kdg.cityofideas.rest.data.Ideation(
-                                    null,
-                                    question,
-                                    about,
-                                    picture,
-                                    null,
-                                    null,
-                                    likes,
-                                    ideas,
-                                    shares
-                                )
-                            )
+                            ideations.add(be.kdg.cityofideas.rest.data.Ideation(id, question, about, picture, null, null, likes, ideas, shares))
                         }
                     }
-
                     adapter.notifyDataSetChanged()
                 }catch (e:Exception){
                     println("FAILLL")

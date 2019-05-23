@@ -45,7 +45,7 @@ class RvIdeationsAdapter(context: Context?,
         holder.numberLikes.text = ideation.numberOfLikes
         holder.numberIdeas.text = ideation.numberOfIdeas
         holder.cardview.setOnClickListener {
-            listener.onIdeationSelected(position)
+            listener.onIdeationSelected(ideation.id!!.toInt())
         }
 
     }

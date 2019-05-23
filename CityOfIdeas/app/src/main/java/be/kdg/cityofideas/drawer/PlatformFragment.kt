@@ -34,13 +34,11 @@ class PlatformFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_platform, container, false)
-
         rvPlatforms = view.findViewById(R.id.platformRv)
         rvPlatforms.layoutManager = LinearLayoutManager(activity)
 
         platforms = ArrayList()
         requestQueue = Volley.newRequestQueue(this.context)
-
 
         adapter = RvPlatformsAdapter(context,platforms,listener)
         rvPlatforms.adapter = adapter
@@ -71,23 +69,17 @@ class PlatformFragment : Fragment() {
                     val obj = response.getJSONObject("data")
                     println(obj)
                     val conn = obj.getJSONArray("platforms")
-
                     for (i in 0 until conn.length()) {
                         val obj2 = conn.getJSONObject(i)
-
                         val title = obj2.getString("name")
                         val id = obj2.getString("id")
                         val short = obj2.getString("explanationShort")
-
                         platforms.add(Platform(id,title,short,null,null,null))
                     }
-                    println(platforms[0])
                     adapter.notifyDataSetChanged()
                 }catch (e:Exception){
                     e.printStackTrace()
-                    println("FAILLL")
                 }
-
             }, com.android.volley.Response.ErrorListener{
                 // Error in request
                 print("FAILVOLLEY")

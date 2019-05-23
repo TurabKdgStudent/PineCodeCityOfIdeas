@@ -61,7 +61,7 @@ class SurveysFragment : Fragment() {
 
 
     fun queue(){
-        val index = projectIndex+1
+        val index = projectIndex
         val query = "query{project(id: $index){phases{surveys{id phase{name} title about questions{id}} logo}}}"
         val jsonObject = JSONObject()
         jsonObject.put("query", query)
@@ -84,12 +84,13 @@ class SurveysFragment : Fragment() {
                         for (j in 0 until conn2.length()) {
                             val obj3 = conn2.getJSONObject(j)
 
+                            val id = obj3.getString("id")
                             val title = obj3.getString("title")
                             val about = obj3.getString("about")
                             val questions = obj3.getJSONArray("questions").length().toString()
                             val phase = obj3.getJSONObject("phase").getString("name")
 
-                            surveys.add(Survey(null,null,title,about,null,questions,phase,logo))
+                            surveys.add(Survey(id,null,title,about,null,questions,phase,logo))
                         }
                     }
                     adapter.notifyDataSetChanged()
@@ -97,7 +98,6 @@ class SurveysFragment : Fragment() {
                     println("SurveyFail")
                     e.printStackTrace()
                 }
-
             }, Response.ErrorListener{
                 // Error in request
                 print("FAILVOLLEY")

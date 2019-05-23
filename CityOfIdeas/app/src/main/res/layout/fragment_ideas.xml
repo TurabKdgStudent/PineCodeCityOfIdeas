@@ -12,7 +12,7 @@
             android:layout_height="match_parent" tools:layout_editor_absoluteY="8dp"
             tools:layout_editor_absoluteX="8dp" android:id="@+id/rv_Ideas"
 
-            android:background="#000001"/>
+            android:background="@color/colorSecondary"/>
     <com.google.android.material.floatingactionbutton.FloatingActionButton android:layout_width="wrap_content"
                                                                            android:layout_height="wrap_content"
                                                                            android:id="@+id/addIdeaButton"
@@ -20,7 +20,7 @@
                                                                            android:layout_marginEnd="16dp"
                                                                            android:layout_marginBottom="16dp"
                                                                            app:layout_constraintBottom_toBottomOf="parent"
-                                                                           android:src="@android:drawable/ic_input_add"
+                                                                           android:src="@drawable/ic_add_black_24dp"
                                                                            android:backgroundTint="@color/colorPrimaryLight"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

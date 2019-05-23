@@ -46,10 +46,8 @@ class QRFragment : Fragment(){
     private lateinit var btnLike : ImageButton
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
-
     @Inject lateinit var apiService : ApiService
     private val cPicasso : PicassoTrustAll = PicassoTrustAll()
-
 
 
 
@@ -59,28 +57,10 @@ class QRFragment : Fragment(){
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         requestQueue = Volley.newRequestQueue(this.context)
-
-
-
-        logo= view.findViewById(R.id.SingleIdeaLogo)
-        titel = view.findViewById(R.id.IdeaTitel)
-        numberLikes = view.findViewById(R.id.numberlikes)
-        explanationShort = view.findViewById(R.id.explanationShort)
-        date = view.findViewById(R.id.IdeaPostDateText)
-        username = view.findViewById(R.id.IdeaUserName)
-        btnVote = view.findViewById(R.id.Vote)
-        btnShare = view.findViewById(R.id.shareIdeaButtonQr)
-        btnLike = view.findViewById(R.id.LikeButton)
-        swipeRefreshLayout = view.findViewById(R.id.refreshSwipe)
-
-
+        initialiseViews(view)
         btnVote.visibility = View.INVISIBLE
         btnShare.visibility = View.INVISIBLE
         btnLike.visibility = View.INVISIBLE
-
-
-        btnScan = view.findViewById(R.id.Scan)
-
         addEventHandlers()
 
         qrScanIntegrator = IntentIntegrator.forSupportFragment(this)
@@ -92,8 +72,22 @@ class QRFragment : Fragment(){
         qrScanIntegrator.setBarcodeImageEnabled(true)
 
         super.onViewCreated(view, savedInstanceState)
-
     }
+
+    private fun initialiseViews(view: View){
+        logo= view.findViewById(R.id.SingleIdeaLogo)
+        titel = view.findViewById(R.id.IdeaTitel)
+        numberLikes = view.findViewById(R.id.numberlikes)
+        explanationShort = view.findViewById(R.id.explanationShort)
+        date = view.findViewById(R.id.IdeaPostDateText)
+        username = view.findViewById(R.id.IdeaUserName)
+        btnVote = view.findViewById(R.id.Vote)
+        btnShare = view.findViewById(R.id.shareIdeaButtonQr)
+        btnLike = view.findViewById(R.id.LikeButton)
+        swipeRefreshLayout = view.findViewById(R.id.refreshSwipe)
+        btnScan = view.findViewById(R.id.Scan)
+    }
+
     private fun addEventHandlers(){
         btnScan.setOnClickListener { performAction() }
 
@@ -154,11 +148,9 @@ class QRFragment : Fragment(){
 
                 } catch (e: JSONException) {
                     e.printStackTrace()
-
                     // Data not in the expected format. So, whole object as toast message.
                     Toast.makeText(activity, result.contents, Toast.LENGTH_LONG).show()
                 }
-
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data)
@@ -192,12 +184,10 @@ class QRFragment : Fragment(){
                     thisIdea = Idea(id,title,date,short,null,picture,null,username,null,null,likes,null,null)
 
                     updateFields()
-
                 }catch (e:Exception){
                     println("FAILQRFRAGMENT")
                     e.printStackTrace()
                 }
-
             }, Response.ErrorListener{
                 // Error in request
                 print("FAILVOLLEY")
@@ -215,12 +205,15 @@ class QRFragment : Fragment(){
                 override fun onResponse(call: Call<String>, response: retrofit2.Response<String>) {
                         println(response.body().toString())
                     queue()
-                    Toast.makeText(context,"Bedankt voor uw stem!",Toast.LENGTH_LONG).show()
+                    if (response.code() == 401){
+                        Toast.makeText(context,"Log in om te kunnen stemmen!",Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(context,"Bedankt voor uw stem!", Toast.LENGTH_LONG).show()
+                    }
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {
                     println(t.printStackTrace())
                     Toast.makeText(context,"Log in om te kunnen stemmen!",Toast.LENGTH_LONG).show()
-
                 }
             }
         )
@@ -230,6 +223,5 @@ class QRFragment : Fragment(){
         val id = thisIdea.id!!.toInt()
         println(id)
         sendVote(id)
-
     }
 }

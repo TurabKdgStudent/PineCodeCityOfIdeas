@@ -57,7 +57,13 @@ class SingleIdeaFragment : Fragment() {
         // Inflate the layout for this fragment
         val view =  inflater.inflate(R.layout.fragment_single_idea, container, false)
         requestQueue = Volley.newRequestQueue(this.context)
+        initialiseViews(view)
+        queue()
+        addEventHandlers()
+        return view
+    }
 
+    private fun initialiseViews(view: View){
         logo= view.findViewById(R.id.SingleIdeaLogo)
         titel = view.findViewById(R.id.IdeaTitel)
         numberLikes = view.findViewById(R.id.numberlikes)
@@ -68,9 +74,6 @@ class SingleIdeaFragment : Fragment() {
         sharebtn = view.findViewById(R.id.shareIdeaButton)
         likebtn = view.findViewById(R.id.LikeButtonSingleIdea)
         swipeRefreshLayout = view.findViewById(R.id.refreshSwipe)
-        queue()
-        addEventHandlers()
-        return view
     }
     private fun addEventHandlers(){
         sharebtn.setOnClickListener {
@@ -143,8 +146,11 @@ class SingleIdeaFragment : Fragment() {
             object : Callback<String> {
                 override fun onResponse(call: Call<String>, response: retrofit2.Response<String>) {
                     queue()
-                    Toast.makeText(context,"Bedankt voor uw stem!", Toast.LENGTH_LONG).show()
-
+                    if (response.code() == 401){
+                        Toast.makeText(context,"Log in om te kunnen stemmen!",Toast.LENGTH_LONG).show()
+                    }else{
+                        Toast.makeText(context,"Bedankt voor uw stem!", Toast.LENGTH_LONG).show()
+                    }
                 }
                 override fun onFailure(call: Call<String>, t: Throwable) {
                     println(t.printStackTrace())

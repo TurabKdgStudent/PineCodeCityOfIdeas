@@ -13,8 +13,6 @@ import android.widget.*
 import be.kdg.cityofideas.MainActivity
 import be.kdg.cityofideas.R
 import be.kdg.cityofideas.rest.*
-import be.kdg.cityofideas.rest.data.Account
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import be.kdg.cityofideas.rest.data.Idea
 import com.google.gson.Gson
@@ -96,8 +94,8 @@ class AddIdeaFragment : Fragment() {
      **/
     @SuppressLint("NewApi")
     private fun createIdea() {
-        var idea = Idea((Random.nextInt(200,500)).toString(),titel, LocalDate.now().toString(),short,long,null,null,null,null,null,null,null,null)
-        var gson = Gson()
+        val idea = Idea((Random.nextInt(200,500)).toString(),titel, LocalDate.now().toString(),short,long,null,null,null,null,null,null,null,null)
+        val gson = Gson()
         print(gson.toJson(idea))
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         val token = sharedPref.getString("token","leeg")

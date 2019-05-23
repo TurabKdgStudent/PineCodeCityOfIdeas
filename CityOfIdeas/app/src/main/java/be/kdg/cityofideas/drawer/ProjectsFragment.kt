@@ -18,6 +18,9 @@ import com.android.volley.toolbox.Volley
 import org.json.JSONObject
 
 @Suppress("NAME_SHADOWING")
+/**
+ * Standaard worden de projecten van platform 1 getoond voor een niet-ingelogde gebruiker.
+ */
 class ProjectsFragment : Fragment() {
 
     private lateinit var rvProjects: androidx.recyclerview.widget.RecyclerView
@@ -26,7 +29,7 @@ class ProjectsFragment : Fragment() {
     private lateinit var phases : ArrayList<Phase>
     private lateinit var requestQueue : RequestQueue
     private lateinit var adapter : RvProjectsAdapter
-    var platformIndex = 0
+    var platformIndex = 1
 
 
 
@@ -60,9 +63,8 @@ class ProjectsFragment : Fragment() {
     }
 
     fun queue(){
-        val index = platformIndex+1
+        val index = platformIndex
         val query = "query{platform(id: $index){projects{id title about picture isActive phases{id}}}}"
-    //    val query = "query{platform(id: 1){projects{id title about picture isActive phases{id}}}}"
         val jsonObject = JSONObject()
         jsonObject.put("query", query)
 
@@ -74,7 +76,6 @@ class ProjectsFragment : Fragment() {
                     val obj = response.getJSONObject("data")
                     println(obj)
                     val conn = obj.getJSONObject("platform").getJSONArray("projects")
-
                     for (i in 0 until conn.length()) {
                         val obj2 = conn.getJSONObject(i)
 
@@ -88,7 +89,6 @@ class ProjectsFragment : Fragment() {
                         val phase = obj2.getJSONArray("phases")
                         for (i in 0 until phase.length()){
                             val phaseObj = phase.getJSONObject(i)
-
                             val phaseId = phaseObj.getString("id")
                             println(phaseId)
                             phases.add(Phase(phaseId,null,null,null,null,null,null,null))
@@ -99,15 +99,13 @@ class ProjectsFragment : Fragment() {
                         status = if (bool == "true"){
                             "Actief"
                         } else "Gesloten"
-
                         projects.add(Project(id,title,null,pic,status,phases))
                     }
                     println(projects[0])
                     adapter.notifyDataSetChanged()
                 }catch (e:Exception){
-                    println("FAILLL")
+                    e.printStackTrace()
                 }
-
             }, com.android.volley.Response.ErrorListener{
                 // Error in request
                 print("FAILVOLLEY")

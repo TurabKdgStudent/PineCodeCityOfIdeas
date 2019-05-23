@@ -14,7 +14,6 @@ import be.kdg.cityofideas.R
 import be.kdg.cityofideas.drawer.PlatformFragment
 import be.kdg.cityofideas.rest.APIUtils
 import be.kdg.cityofideas.rest.ApiService
-import kotlinx.android.synthetic.main.activity_main.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -32,8 +31,6 @@ class LoginFragment : Fragment() {
 
     @Inject
     lateinit var apiService : ApiService
-
-    private val drawer = drawer_layout
 
     private lateinit var login : Login
     private lateinit var token : String

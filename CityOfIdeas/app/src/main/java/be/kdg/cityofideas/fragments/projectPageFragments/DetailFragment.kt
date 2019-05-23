@@ -47,8 +47,6 @@ import org.json.JSONObject
           thisproject = be.kdg.cityofideas.rest.data.Project(null,null,null,null,null,null)
         requestQueue = Volley.newRequestQueue(this.context)
 
-
-
         projectTitle = view.findViewById(R.id.ProjectTitel)
         explanation = view.findViewById(R.id.projectText)
         projectpic = view.findViewById(R.id.ProjectDetailPic)
@@ -65,7 +63,7 @@ import org.json.JSONObject
     }
 
     fun queue(){
-        val index = projectIndex+1
+        val index = projectIndex
         val query = "query{project(id: $index ){id title about picture phases{name}}}"
         val jsonObject = JSONObject()
           jsonObject.put("query", query)
@@ -78,13 +76,12 @@ import org.json.JSONObject
                       val obj = response.getJSONObject("data")
                       println(obj)
                       val project = obj.getJSONObject("project")
-                     // println(project)
                       val id = project.getString("id")
                       val title = project.getString("title")
                       val about = project.getString("about")
                       val picture = project.getString("picture")
                       println(id)
-                       thisproject = be.kdg.cityofideas.rest.data.Project(id,title,about,picture,null,null)
+                      thisproject = be.kdg.cityofideas.rest.data.Project(id,title,about,picture,null,null)
                       updateFields()
 
                   }catch (e:Exception){

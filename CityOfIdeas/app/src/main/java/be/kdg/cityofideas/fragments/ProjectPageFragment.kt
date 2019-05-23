@@ -1,7 +1,6 @@
     package be.kdg.cityofideas.fragments
 
 import android.os.Bundle
-import com.google.android.material.tabs.TabItem
 import com.google.android.material.tabs.TabLayout
 import androidx.fragment.app.Fragment
 import androidx.viewpager.widget.ViewPager

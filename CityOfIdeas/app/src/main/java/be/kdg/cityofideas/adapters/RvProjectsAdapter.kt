@@ -9,8 +9,6 @@ import android.widget.TextView
 import be.kdg.cityofideas.R
 import be.kdg.cityofideas.rest.IMAGE_URL
 import be.kdg.cityofideas.rest.PicassoTrustAll
-import okhttp3.*
-import org.json.JSONObject
 
 
 class RvProjectsAdapter(
@@ -20,11 +18,6 @@ class RvProjectsAdapter(
     : androidx.recyclerview.widget.RecyclerView.Adapter<RvProjectsAdapter.MyViewHolder>() {
 
 
-
-    //FETCH
-    private val jsonObjectQuery: JSONObject = JSONObject()
-    val client : OkHttpClient = OkHttpClient()
-    //// Project info
     private val context : Context = context!!
     private val cPicasso : PicassoTrustAll = PicassoTrustAll()
 

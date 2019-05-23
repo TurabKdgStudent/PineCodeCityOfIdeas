@@ -74,7 +74,7 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    fun initialiseViews(){
+    private fun initialiseViews(){
 
         //nav & default Toolbar
         navigationView = findViewById(R.id.nav_view)
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(),
 
     }
 
-    fun addEventHandlers(){
+    private fun addEventHandlers(){
         navigationView.setNavigationItemSelectedListener(this)
         nav_login.setOnClickListener {
             supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
@@ -163,9 +163,10 @@ class MainActivity : AppCompatActivity(),
             .addToBackStack("").commit()
     }
 
-    override fun onSurveySelected(surveyIndex: Int) {
+    override fun onSurveySelected(surveyIndex: Int,projectIndex: Int) {
         val singleSurveyFragment = SingleSurveyFragment()
         singleSurveyFragment.surveyindex = surveyIndex
+        singleSurveyFragment.projectindex = projectIndex
         supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
             .replace(R.id.fragment_container,singleSurveyFragment)
             .addToBackStack("").commit()
