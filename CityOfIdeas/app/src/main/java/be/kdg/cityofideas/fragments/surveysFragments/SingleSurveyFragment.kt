@@ -144,9 +144,7 @@ class SingleSurveyFragment : Fragment() {
 
 
                         }
-
                         questions.add(Question(id, text, type, choices))
-
                     }
                     showSurvey()
                 } catch (e: Exception) {
