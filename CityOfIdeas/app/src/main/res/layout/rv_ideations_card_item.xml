@@ -1,0 +1,75 @@
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                   android:layout_height="400dp" app:cardBackgroundColor="@color/Asteroid"
+                                   app:contentPadding="0dp" app:cardUseCompatPadding="true"
+                                   android:layout_marginBottom="10dp" android:layout_marginTop="10dp"
+                                   app:cardCornerRadius="15dp" android:id="@+id/cardViewIdeations"
+                                   android:clickable="true" android:focusable="true">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:id="@+id/ConstraintLayoutIdeationCard">
+
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp" android:id="@+id/ideation_logo"
+                android:adjustViewBounds="true" tools:srcCompat="@mipmap/i1"
+                android:paddingTop="0dp" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guideline9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"/>
+
+
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline9"
+                                                    app:layout_constraintGuide_begin="174dp"
+                                                    android:orientation="horizontal"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                  app:layout_constraintTop_toTopOf="@+id/guideline9" android:layout_marginTop="16dp"
+                  app:layout_constraintStart_toStartOf="parent" android:id="@+id/ideation_title"
+                  tools:text="Recreatie" android:layout_marginStart="8dp" android:textSize="24sp"
+                  android:textColor="#FDFDFE" android:textStyle="bold"
+                  android:fontFamily="sans-serif-black"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/explanation"
+                app:layout_constraintTop_toBottomOf="@+id/ideation_title"
+                android:layout_marginTop="16dp" android:textColor="#FDFDFE"
+                tools:text="Wat zou u willen veranderen aan recreatieve mogelijkheden van 't Stad?"
+                app:layout_constraintStart_toStartOf="@+id/ideation_title" app:layout_constraintEnd_toEndOf="parent"/>
+        <ImageView
+                android:layout_width="24dp"
+                android:layout_height="21dp" app:srcCompat="@drawable/ic_thumb_up_black_24dp"
+                android:id="@+id/LikeIcon"
+                android:tint="#FDFDFE" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="24dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/numberLikes"
+                app:layout_constraintStart_toEndOf="@+id/LikeIcon"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/LikeIcon"
+                app:layout_constraintTop_toTopOf="@+id/LikeIcon" android:textColor="@color/colorPrimaryLight"
+                tools:text="99"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/bottomnav_ideation"
+                android:id="@+id/ideaIcon" android:tint="#FFFFFF" app:layout_constraintEnd_toStartOf="@+id/numberIdeas"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toTopOf="@+id/LikeIcon"
+                app:layout_constraintBottom_toBottomOf="@+id/LikeIcon"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/numberIdeas" tools:text="47"
+                android:backgroundTint="#FCFFFEFE" android:textColor="#FDFFFFFF" android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/ideaIcon"
+                app:layout_constraintBottom_toBottomOf="@+id/ideaIcon"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

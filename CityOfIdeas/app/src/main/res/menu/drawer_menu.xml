@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+            xmlns:tools="http://schemas.android.com/tools"
+      tools:showIn="navigation_view">
+<group android:checkableBehavior="single">
+        <item android:id="@+id/nav_projects"
+              android:title="@string/projecten"
+        />
+        <item android:id="@+id/nav_QR"
+              android:title="@string/QR_drawer"/>
+        <item android:id="@+id/nav_platforms"
+              android:title="@string/platforms_drawer"/>
+    </group>
+
+    <item android:title="@string/leeg">
+        <menu>
+            <item android:id="@+id/nav_about"
+                  android:title="@string/over_drawer"/>
+        </menu>
+    </item>
+
+
+
+
+
+</menu>

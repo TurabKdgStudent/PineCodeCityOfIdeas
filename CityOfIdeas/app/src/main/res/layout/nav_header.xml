@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="300dp"
+              android:orientation="vertical"
+              android:background="@color/colorSecondary"
+              android:gravity="bottom"
+              android:padding="16dp"
+              android:theme="@style/ThemeOverlay.AppCompat.Dark"
+>
+    <de.hdodenhof.circleimageview.CircleImageView
+            xmlns:app="http://schemas.android.com/apk/res-auto"
+            android:layout_width="100dp"
+            android:layout_height="100dp"
+            android:src="@mipmap/pinecodelogo2"
+            android:id="@+id/Drawer_Logo"
+            android:adjustViewBounds="false"
+            app:civ_border_color="@color/colorAccent"
+            app:civ_border_width="3dp"
+            android:foregroundGravity="fill_horizontal|top" android:layout_gravity="center|center_horizontal|top"
+            android:layout_marginBottom="50dp"/>
+    <TextView android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:paddingTop="8dp"
+              android:text="@string/app_name"
+              android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
+              android:textColor="@color/colorPrimaryLight" android:textStyle="bold"/>
+
+
+
+
+</LinearLayout>

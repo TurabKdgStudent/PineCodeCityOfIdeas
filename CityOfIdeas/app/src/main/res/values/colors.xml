@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#26C6DA</color>
+    <color name="colorPrimaryDark">#0095A8</color>
+    <color name="colorPrimaryLight">#6FF9FF</color>
+
+    <color name="colorSecondary">#212121</color>
+    <color name="colorSecondaryDark">#000000</color>
+    <color name="colorSecondaryLight">#484848</color>
+
+    <color name="colorAccent">#484848</color>
+
+
+
+
+    <!-- 1st Gradient color -->
+    <color name="colorPurple_A400">#D500F9</color>
+    <color name="colorPurple_900">#4A148C</color>
+    <!-- ./ 1st Gradient color -->
+
+    <!-- 2nd Gradient color -->
+    <color name="colorAmber_A400">#F8D971</color>
+    <color name="colorAmber_900">#FF6F00</color>
+    <!-- ./ 2nd Gradient color -->
+
+    <!-- 3rd Gradient color -->
+    <color name="colorGreen_A400">#00E676</color>
+    <color name="colorGreen_900">#1B5E20</color>
+    <!-- ./ 3rd Gradient color -->
+
+    <!-- 4th Gradient color -->
+    <color name="colorRed_A400">#FF1744</color>
+    <color name="colorRed_900">#B71C1C</color>
+    <!-- ./ 4th Gradient color -->
+
+    <!-- 5th Gradient color -->
+    <color name="colorBlue_A400">#00C9FF</color>
+    <color name="colorBlue_900">#92FE9D</color>
+    <!-- ./ 5th Gradient color -->
+
+
+
+    <color name="Love">#200122</color>
+    <color name="Liberty">#74140D</color>
+
+    <color name="Moonlit">#0F2027</color>
+    <color name="Asteroid">#203A43</color>
+    <color name="Lagoon">#2C5364</color>
+    <color name="buttons">#9CAAC6</color>
+
+
+</resources>

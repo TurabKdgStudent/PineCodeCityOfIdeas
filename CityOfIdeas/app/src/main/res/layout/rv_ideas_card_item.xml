@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                   xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                   android:layout_height="400dp" app:cardBackgroundColor="@color/Asteroid"
+                                   app:contentPadding="0dp" app:cardUseCompatPadding="true"
+                                   android:layout_marginBottom="10dp" android:layout_marginTop="10dp"
+                                   app:cardCornerRadius="15dp" android:id="@+id/cardViewIdeas"
+                                   android:clickable="true" android:focusable="true">
+    <androidx.constraintlayout.widget.ConstraintLayout android:layout_width="match_parent"
+                                                       android:layout_height="match_parent"
+                                                       android:id="@+id/ConstraintLayoutIdeationCard">
+
+        <ImageView
+                android:layout_width="0dp"
+                android:layout_height="0dp" android:id="@+id/idea_logo"
+                android:adjustViewBounds="true"
+                android:paddingTop="0dp" app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toTopOf="@+id/guideline9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" android:background="@mipmap/i1"/>
+
+
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline9"
+                                                    app:layout_constraintGuide_begin="174dp"
+                                                    android:orientation="horizontal"/>
+        <ImageView
+                android:layout_width="24dp"
+                android:layout_height="21dp" app:srcCompat="@drawable/ic_thumb_up_black_24dp"
+                android:id="@+id/LikeIcon"
+                android:tint="#FDFDFE" app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="16dp"
+                app:layout_constraintBottom_toBottomOf="parent" android:layout_marginBottom="8dp"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/numberLikes"
+                app:layout_constraintStart_toEndOf="@+id/LikeIcon"
+                android:layout_marginStart="8dp"
+                app:layout_constraintBottom_toBottomOf="@+id/LikeIcon"
+                app:layout_constraintTop_toTopOf="@+id/LikeIcon" android:textColor="@color/colorPrimaryLight"
+                tools:text="99"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/IdeaTitelText"
+                tools:text="Recreatie"
+                android:textColor="#FDFDFE" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp" android:layout_marginTop="16dp"
+                app:layout_constraintTop_toTopOf="@+id/guideline9"
+                android:textStyle="bold" android:textSize="24sp"/>
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:id="@+id/explanationShort"
+                app:layout_constraintTop_toBottomOf="@+id/IdeaTitelText"
+                tools:text="Wat zou u willen veranderen aan recreatieve mogelijkheden van 't Stad?"
+                android:textColor="#FFFFFF" android:layout_marginTop="16dp"
+                app:layout_constraintStart_toStartOf="@+id/IdeaTitelText" app:layout_constraintEnd_toEndOf="parent"
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toTopOf="@+id/LikeIcon"
+                android:textSize="12sp"/>
+        <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content" app:srcCompat="@drawable/bottomnav_comments"
+                android:id="@+id/commentIcon" android:tint="#FFFFFF"
+                app:layout_constraintEnd_toStartOf="@+id/numberComments"
+                android:layout_marginEnd="8dp"
+                app:layout_constraintTop_toTopOf="@+id/LikeIcon"
+                app:layout_constraintBottom_toBottomOf="@+id/LikeIcon"/>
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/numberComments" tools:text="47"
+                android:backgroundTint="#FCFFFEFE" android:textColor="#FDFFFFFF" android:layout_marginEnd="16dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/commentIcon"
+                app:layout_constraintBottom_toBottomOf="@+id/commentIcon"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</androidx.cardview.widget.CardView>

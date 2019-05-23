@@ -1,0 +1,106 @@
+<resources>
+    <string name="app_name">CityOfIdeas</string>
+    <string name="title_activity_login">Sign in</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Wachtwoord</string>
+    <string name="prompt_repeat_password">Herhaal Wachtwoord</string>
+    <string name="prompt_firstname">Voornaam</string>
+    <string name="prompt_lastname">Achternaam</string>
+    <string name="prompt_birthdate">Geboortedatum</string>
+    <string name="action_sign_in">Sign in or register</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email completions."</string>
+    <string name="login">Login</string>
+    <string name="register">Registreer</string>
+    <string name="forgotpwd">
+        <u>wachtwoord vergeten?</u>
+    </string>
+    <string name="nomember">Nog geen lid?</string>
+    <string name="registernow">
+        <u>REGISTREER!</u>
+    </string>
+    <string name="projecten">Projecten</string>
+    <string name="QR_drawer">QR-Scanner</string>
+    <string name="profiel_drawer">Profiel</string>
+    <string name="platforms_drawer">Platformen</string>
+
+    <string name="instellingen_drawer">Instellingen</string>
+    <string name="over_drawer">Over</string>
+
+    <string name="BASE_URL">https://34.76.13.110/Graphql/Post</string>
+    <string name="IMAGE_URL">https://34.76.13.110</string>
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="demo_mail">turabbug@hotmail.com</string>
+    <string name="demo_adres">Groenendaallaan 40, 2170 Merksem</string>
+    <string name="superadmin">Superadmin</string>
+    <string name="nav_logintext">Login</string>
+    <string name="login_drawer">Login</string>
+    <string name="bottomnav_details">Details</string>
+    <string name="bottomnav_ideations">Ideations</string>
+    <string name="bottomnav_surveys">Surveys</string>
+
+    <string name="burgerbegroting">BurgerBegroting</string>
+    <string name="Lorem_ipsum">Lorem Ipsum is slechts een proeftekst uit het drukkerij- en zetterijwezen. Lorem Ipsum is
+        de standaard proeftekst in deze bedrijfstak sinds de 16e eeuw, toen een onbekende drukker een zethaak met
+        letters nam en ze door elkaar husselde om een font-catalogus te maken. Het heeft niet alleen vijf eeuwen
+        overleefd maar is ook, vrijwel onveranderd, overgenomen in elektronische letterzetting.
+    </string>
+    <string name="einde">Einde:</string>
+    <string name="start">Start:</string>
+
+    <string name="project_id">project_id</string>
+    <string name="eindigt_op">Eindigt op:</string>
+    <string name="survey_eindigt_op">Eindigt op:</string>
+    <string name="gecreerd_op">Gecreerd op:</string>
+
+    //QR
+
+    <string name="scan_a_code">Scan a QR Code</string>
+    <string name="result_not_found">Result Not Found</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="jens_verboven">Jens Verboven</string>
+    <string name="cedric_claes">Cedric Claes</string>
+    <string name="oliver_van_roey">Oliver Van Roey</string>
+    <string name="turab_bug_l">Turab Bugöl</string>
+    <string name="jeroen_verstraete">Jeroen Verstraete</string>
+    <string name="ontwikkeld_door">Ontwikkeld door:</string>
+    <string name="bram_van_buynder">Bram Van Buynder</string>
+    <string name="pinecode">PineCode</string>
+    <string name="_2019">2019</string>
+    <string name="status">Status:</string>
+    <string name="empty">---</string>
+    <string name="scan_qr_code">SCAN QR-CODE!</string>
+    <string name="stem">Stem!</string>
+    <string name="empty2">--</string>
+    <string name="aantal_vragen">Aantal vragen:</string>
+    <string name="voeg_een_idee_toe">Voeg een idee toe</string>
+    <string name="AddIdeatitel">Titel:*</string>
+    <string name="korte_beschrijving">Korte beschrijving:*</string>
+    <string name="lange_beschrijving">Lange beschrijving:</string>
+    <string name="voeg_een_afbeelding_toe">Voeg een afbeelding toe:</string>
+    <string name="voeg_toe">Voeg Toe!</string>
+    <string name="voer_hier_een_titel_in">Voer hier een titel in!</string>
+    <string name="geef_een_korte_beschrijving">Geef een korte beschrijving!</string>
+    <string name="beschrijf_uw_idee_uitbundig">Beschrijf uw idee uitbundig!</string>
+    <string name="fase">Fase:</string>
+    <string name="leeg"/>
+    <string name="al_een_account">Al een account?</string>
+    <string name="log_nu_in">LOG HIER IN!</string>
+    <string name="bevestig_wachtwoord">Bevestig wachtwoord</string>
+    <string name="hint">Uw antwoord</string>
+    <string name="SURVEYINDEX">SurveyIndex</string>
+    <string name="verstuur">Verstuur!</string>
+    <string name="uw_vragenlijst_werd_succesvol_ingediend">Uw vragenlijst werd succesvol ingediend!</string>
+    <string name="kies_een_platform">Kies uw platform:</string>
+
+</resources>

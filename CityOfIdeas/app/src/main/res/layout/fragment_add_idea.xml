@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools"
+            android:layout_height="match_parent" xmlns:android="http://schemas.android.com/apk/res/android"
+            android:layout_width="match_parent">
+    <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+                                                       android:layout_height="wrap_content"
+                                                       tools:context=".fragments.ideasFragments.AddIdeaFragment"
+                                                       android:id="@+id/ConstraintLayout"
+                                                       android:backgroundTint="#FDFDFE"
+                                                       android:background="#FDFDFE">
+        <TextView
+                android:text="@string/voeg_een_idee_toe"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddIdeaHeader" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toTopOf="parent" android:layout_marginTop="16dp" android:textSize="36sp"
+                android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent" android:textStyle="bold|italic"
+                android:textColor="@android:color/black"/>
+        <TextView
+                android:text="@string/AddIdeatitel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddIdeaTitle" app:layout_constraintStart_toStartOf="parent"
+                android:layout_marginStart="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/AddIdeaHeader" android:layout_marginTop="32dp"
+                android:textSize="18sp" android:textStyle="bold" android:textColor="@android:color/black"/>
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/TitelInput"
+                android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/AddIdeaTitle" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline19" android:hint="@string/voer_hier_een_titel_in"
+                android:visibility="visible" android:selectAllOnFocus="true" android:textColor="@android:color/black"
+                android:textColorHint="@android:color/darker_gray"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:textAlignment="inherit" android:background="@drawable/shape"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:id="@+id/guideline19"
+                                                    android:orientation="horizontal"
+                                                    app:layout_constraintGuide_percent="0.23"/>
+        <TextView
+                android:text="@string/korte_beschrijving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddIdeaShort" app:layout_constraintStart_toStartOf="@+id/TitelInput"
+                app:layout_constraintTop_toTopOf="@+id/guideline19" android:layout_marginTop="8dp"
+                android:textStyle="bold" android:textSize="18sp" android:textColor="@android:color/black"/>
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:inputType="textMultiLine"
+                android:gravity="start|top"
+                android:ems="10"
+                android:id="@+id/ShortInput" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/AddIdeaShort" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline20"
+                android:hint="@string/geef_een_korte_beschrijving"
+                android:textColor="@android:color/black" android:textColorHint="@android:color/darker_gray"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/shape"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:id="@+id/guideline20"
+                                                    android:orientation="horizontal"
+                                                    app:layout_constraintGuide_percent="0.42"/>
+        <TextView
+                android:text="@string/lange_beschrijving"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddIdeaLong"
+                app:layout_constraintTop_toTopOf="@+id/guideline20"
+                app:layout_constraintStart_toStartOf="@+id/ShortInput"
+                android:layout_marginTop="8dp" android:textSize="18sp" android:textStyle="bold"
+                android:textColor="@android:color/black"/>
+        <EditText
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                android:inputType="textMultiLine"
+                android:gravity="start|top"
+                android:ems="10"
+                android:id="@+id/LongInput" android:layout_marginStart="8dp"
+                app:layout_constraintStart_toStartOf="parent" android:layout_marginEnd="8dp"
+                app:layout_constraintEnd_toEndOf="parent" android:layout_marginTop="8dp"
+                app:layout_constraintTop_toBottomOf="@+id/AddIdeaLong" android:layout_marginBottom="8dp"
+                app:layout_constraintBottom_toTopOf="@+id/guideline21"
+                android:hint="@string/beschrijf_uw_idee_uitbundig"
+                android:textColor="@android:color/black" android:textColorHint="@android:color/darker_gray"
+                android:cursorVisible="true"
+                android:textCursorDrawable="@null"
+                android:background="@drawable/shape"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content"
+                                                    android:id="@+id/guideline21"
+                                                    android:orientation="horizontal"
+                                                    app:layout_constraintGuide_percent="0.78063244"/>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/AddIdeaSubmit" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
+                android:layout_marginBottom="8dp" app:layout_constraintBottom_toBottomOf="parent"
+                android:background="@android:color/black" android:src="@drawable/ic_done_black_24dp"/>
+        <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
+                                                    android:layout_height="wrap_content" android:id="@+id/guideline22"
+                                                    app:layout_constraintGuide_begin="777dp"
+                                                    android:orientation="horizontal"/>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+   </ScrollView>
