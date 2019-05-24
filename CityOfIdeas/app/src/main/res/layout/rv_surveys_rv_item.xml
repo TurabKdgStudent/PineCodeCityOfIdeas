@@ -13,17 +13,17 @@
                                                    app:layout_constraintBottom_toBottomOf="parent"
                                                    android:layout_marginStart="6dp"
                                                    android:layout_marginEnd="6dp"
-                                                   android:background="@drawable/drawable_moonlit_asteroids">
+                                                   android:background="@drawable/roundedbutton">
 
 
     <TextView android:layout_width="0dp" android:layout_height="wrap_content"
               app:layout_constraintStart_toStartOf="parent" android:id="@+id/survey_title"
-              tools:text="SurveyVraag" android:textSize="24sp"
+              tools:text="SurveyVraag" android:textSize="18sp"
               android:textColor="#FDFDFE" android:textStyle="bold"
               android:fontFamily="sans-serif-black"
               android:layout_marginTop="8dp"
               app:layout_constraintTop_toTopOf="parent"
-              android:layout_marginStart="8dp" android:layout_marginEnd="8dp"
+              android:layout_marginStart="16dp" android:layout_marginEnd="32dp"
               app:layout_constraintEnd_toStartOf="@+id/guideline18"/>
     <TextView
             android:layout_width="wrap_content"
@@ -31,8 +31,9 @@
             android:id="@+id/aantalquestions"
             android:text="@string/aantal_vragen"
             android:layout_marginTop="8dp" app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintEnd_toStartOf="@+id/aantalQuestionsText" android:layout_marginEnd="8dp"
-            app:layout_constraintStart_toStartOf="@+id/guideline18" android:layout_marginStart="8dp"/>
+            app:layout_constraintEnd_toStartOf="@+id/aantalQuestionsText" android:layout_marginEnd="24dp"
+            app:layout_constraintStart_toStartOf="@+id/guideline18" android:textColor="@color/colorSecondaryLight"
+            android:textStyle="bold"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -40,28 +41,20 @@
             app:layout_constraintTop_toTopOf="@+id/aantalquestions"
             app:layout_constraintBottom_toBottomOf="@+id/aantalquestions"
             tools:text="5"
-            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"/>
-    <TextView
-            android:text="@string/fase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/surveyPhase"
-            app:layout_constraintEnd_toStartOf="@+id/surveyPhaseText" android:layout_marginEnd="8dp"
-            app:layout_constraintTop_toTopOf="@+id/surveyPhaseText"
-            app:layout_constraintBottom_toBottomOf="@+id/surveyPhaseText"
-            app:layout_constraintStart_toStartOf="@+id/guideline18" android:layout_marginStart="8dp"/>
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="16dp"
+            android:textColor="@color/colorSecondaryDark" android:textStyle="bold|italic"/>
     <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/surveyPhaseText"
-            app:layout_constraintEnd_toEndOf="parent"
             tools:text="BeginFase"
-            android:layout_marginEnd="8dp" android:layout_marginTop="64dp"
+            android:layout_marginTop="64dp"
             app:layout_constraintTop_toBottomOf="@+id/aantalQuestionsText" android:layout_marginBottom="32dp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintEnd_toEndOf="@+id/aantalQuestionsText"
+            android:textColor="@color/colorSecondaryDark" android:textStyle="bold|italic"/>
     <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content" android:layout_height="wrap_content"
-                                                android:id="@+id/guideline18" app:layout_constraintGuide_begin="259dp"
-                                                android:orientation="vertical"/>
+                                                android:id="@+id/guideline18"
+                                                android:orientation="vertical" app:layout_constraintGuide_end="164dp"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
