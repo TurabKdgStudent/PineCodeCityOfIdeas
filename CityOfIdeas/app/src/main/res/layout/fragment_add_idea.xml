@@ -4,11 +4,10 @@
             android:layout_width="match_parent">
     <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-                                                       android:layout_height="wrap_content"
-                                                       tools:context=".fragments.ideasFragments.AddIdeaFragment"
-                                                       android:id="@+id/ConstraintLayout"
-                                                       android:backgroundTint="#FDFDFE"
-                                                       android:background="#FDFDFE">
+            android:layout_height="wrap_content"
+            tools:context=".fragments.ideasFragments.AddIdeaFragment"
+            android:id="@+id/ConstraintLayout"
+            android:background="@android:color/white">
         <TextView
                 android:text="@string/voeg_een_idee_toe"
                 android:layout_width="wrap_content"
