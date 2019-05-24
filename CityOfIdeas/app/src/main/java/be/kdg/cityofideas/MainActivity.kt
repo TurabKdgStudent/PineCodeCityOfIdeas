@@ -75,15 +75,22 @@ class MainActivity : AppCompatActivity(),
         toggle.setToolbarNavigationClickListener {
             Toast.makeText(this,"Log in om te verkennen!",Toast.LENGTH_LONG).show()
         }
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        if (sharedPref.getString("username","") == ""){
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,LoginFragment()).commitAllowingStateLoss()
+        } else{
+            supportFragmentManager.beginTransaction().replace(R.id.fragment_container,PlatformFragment()).commitAllowingStateLoss()
+        }
     }
 
     override fun onResume() {
-        super.onResume()
         val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
         headerView = navigationView.getHeaderView(0)
         val navUserName =  headerView.findViewById<TextView>(R.id.usernameNavhead)
         navUserName.text = sharedPref.getString("username","")
+        super.onResume()
     }
+
 
     private fun initialiseViews(){
         //nav & default Toolbar
