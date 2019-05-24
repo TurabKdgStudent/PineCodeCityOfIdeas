@@ -102,5 +102,6 @@
     <string name="verstuur">Verstuur!</string>
     <string name="uw_vragenlijst_werd_succesvol_ingediend">Uw vragenlijst werd succesvol ingediend!</string>
     <string name="kies_een_platform">Kies uw platform:</string>
+    <string name="Log_out">LOG UIT</string>
 
 </resources>

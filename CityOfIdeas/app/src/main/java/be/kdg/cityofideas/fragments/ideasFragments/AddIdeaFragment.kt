@@ -12,6 +12,7 @@ import android.view.ViewGroup
 import android.widget.*
 import be.kdg.cityofideas.MainActivity
 import be.kdg.cityofideas.R
+import be.kdg.cityofideas.identity.fragments.LoginFragment
 import be.kdg.cityofideas.rest.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import be.kdg.cityofideas.rest.data.Idea
@@ -67,7 +68,6 @@ class AddIdeaFragment : Fragment() {
             view?.let { it1 -> MainActivity().hideSoftKeyboard(it1) }
             if (checkValidation()){
                 createIdea()
-                closeFragment()
             }
         }
     }
@@ -99,15 +99,18 @@ class AddIdeaFragment : Fragment() {
         print(gson.toJson(idea))
         val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
         val token = sharedPref.getString("token","leeg")
-        val call : Call<String> = APIUtils().getAPIService().createIdea(token,ideationIndex+1,idea)
+        val call : Call<String> = APIUtils().getAPIService().createIdea(token,ideationIndex,idea)
 
         call.enqueue(object : retrofit2.Callback<String>{
             override fun onResponse(call: Call<String>, response: Response<String>) {
-                println()
                 println(response.body().toString() + "IDEACREATED")
-
-
-                Toast.makeText(context,"Bedankt voor het creeren van uw Idee",Toast.LENGTH_LONG).show()
+                if (response.code() == 401){
+                    Toast.makeText(context,"Log in om een idee te kunnen creëren!",Toast.LENGTH_LONG).show()
+                    goToLoginFragment()
+                }else{
+                    Toast.makeText(context,"Bedankt voor het creëren van uw Idee!", Toast.LENGTH_LONG).show()
+                    closeFragment()
+                }
             }
             override fun onFailure(call: Call<String>, t: Throwable) {
                 println(t.printStackTrace())
@@ -122,6 +125,13 @@ class AddIdeaFragment : Fragment() {
         ideasFragment.ideationIndex = ideationIndex
         fragmentManager!!.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
             .replace(R.id.fragment_container,ideasFragment)
+            .commit()
+    }
+
+    private fun goToLoginFragment(){
+        fragmentManager!!.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
+            .replace(R.id.fragment_container,LoginFragment())
+            .addToBackStack("")
             .commit()
     }
 }

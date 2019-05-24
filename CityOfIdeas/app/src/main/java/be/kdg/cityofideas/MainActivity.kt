@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import be.kdg.cityofideas.adapters.*
@@ -88,6 +89,8 @@ class MainActivity : AppCompatActivity(),
         headerView = navigationView.getHeaderView(0)
         val navUserName =  headerView.findViewById<TextView>(R.id.usernameNavhead)
         navUserName.text = sharedPref.getString("username","")
+        val navLogBtn = navigationView.findViewById<Button>(R.id.nav_login)
+        navLogBtn.text = sharedPref.getString("logbutton","LOGIN")
         super.onResume()
     }
 
@@ -106,6 +109,15 @@ class MainActivity : AppCompatActivity(),
     private fun addEventHandlers(){
         navigationView.setNavigationItemSelectedListener(this)
         nav_login.setOnClickListener {
+            val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+            if (sharedPref.getString("username","") != ""){
+                sharedPref.edit().clear().apply()
+                headerView = navigationView.getHeaderView(0)
+                val navUserName =  headerView.findViewById<TextView>(R.id.usernameNavhead)
+                navUserName.text = ""
+                Toast.makeText(this,"U bent succesvol uitgelogd!",Toast.LENGTH_LONG).show()
+                nav_login.text = sharedPref.getString("logbutton","LOGIN")
+            }
             supportFragmentManager.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
                 .replace(R.id.fragment_container,LoginFragment()).addToBackStack("").commit()
             drawer.closeDrawer(GravityCompat.START)

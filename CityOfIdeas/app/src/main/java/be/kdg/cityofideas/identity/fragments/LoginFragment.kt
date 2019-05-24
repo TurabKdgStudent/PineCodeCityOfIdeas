@@ -15,6 +15,7 @@ import be.kdg.cityofideas.drawer.PlatformFragment
 import be.kdg.cityofideas.rest.APIUtils
 import be.kdg.cityofideas.rest.ApiService
 import com.auth0.android.jwt.JWT
+import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.nav_header.*
 import retrofit2.Call
 import retrofit2.Callback
@@ -37,6 +38,8 @@ class LoginFragment : Fragment() {
 
     private lateinit var login : Login
     private lateinit var token : String
+    private lateinit var navigationView: NavigationView
+    private lateinit var navLoginBtn : Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,16 +55,12 @@ class LoginFragment : Fragment() {
     }
 
     private fun initialiseViews(view : View){
-
         register = view.findViewById(R.id.RegisterTextView)
         email = view.findViewById(R.id.email)
         pwd = view.findViewById(R.id.password)
         loginbtn = view.findViewById(R.id.LoginButton)
-
-
-//        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-
-
+        navigationView = activity!!.findViewById(R.id.nav_view)
+        navLoginBtn = navigationView.findViewById(R.id.nav_login)
     }
 
     private fun addEventHandlers(){
@@ -71,8 +70,13 @@ class LoginFragment : Fragment() {
         }
         loginbtn.setOnClickListener {
             login()
+            val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE)
+            navLoginBtn.text = resources.getString(R.string.Log_out)
+            with (sharedPref!!.edit()) {
+                putString("logbutton", navLoginBtn.text.toString())
+                apply()
+            }
         }
-
     }
 
     fun login(){
@@ -89,8 +93,6 @@ class LoginFragment : Fragment() {
                 if (response.isSuccessful) {
                     token = response.body().toString()
                     println(token)
-                    /*login.createUser(null,email.text.toString(),token)
-                    login.getUser()*/
                     val sharedPref = activity?.getPreferences(Context.MODE_PRIVATE) ?: return
                     with (sharedPref.edit()) {
                         putString("token", "Bearer $token")
