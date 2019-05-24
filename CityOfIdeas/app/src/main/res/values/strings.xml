@@ -95,7 +95,7 @@
     <string name="fase">Fase:</string>
     <string name="leeg"/>
     <string name="al_een_account">Al een account?</string>
-    <string name="log_nu_in">LOG HIER IN!</string>
+    <string name="log_nu_in"><u>LOG HIER IN!</u> </string>
     <string name="bevestig_wachtwoord">Bevestig wachtwoord</string>
     <string name="hint">Uw antwoord</string>
     <string name="SURVEYINDEX">SurveyIndex</string>

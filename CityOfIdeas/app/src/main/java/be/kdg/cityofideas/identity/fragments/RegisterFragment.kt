@@ -48,7 +48,7 @@ class RegisterFragment : Fragment() {
 
     private fun initialiseViews(view : View){
 
-        login = view.findViewById(R.id.goToLogin)
+        login = view.findViewById(R.id.loginNow)
         email = view.findViewById(R.id.email)
         pwd = view.findViewById(R.id.password)
         confirmPwd = view.findViewById(R.id.confirmpassword)

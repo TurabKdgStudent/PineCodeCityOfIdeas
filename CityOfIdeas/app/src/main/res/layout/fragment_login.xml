@@ -124,6 +124,6 @@
             android:layout_marginStart="4dp"
             android:textColor="@color/colorPrimaryDark"
             app:layout_constraintTop_toTopOf="@+id/NotAMemberTextView"
-            app:layout_constraintBottom_toBottomOf="@+id/NotAMemberTextView"/>
+            app:layout_constraintBottom_toBottomOf="@+id/NotAMemberTextView" android:textStyle="bold"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

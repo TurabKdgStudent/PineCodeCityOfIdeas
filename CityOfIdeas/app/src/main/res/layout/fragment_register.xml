@@ -151,6 +151,6 @@
             android:layout_marginStart="4dp"
             android:textColor="@color/colorPrimaryDark"
             app:layout_constraintTop_toTopOf="@+id/goToLogin"
-            app:layout_constraintBottom_toBottomOf="@+id/goToLogin"/>
+            app:layout_constraintBottom_toBottomOf="@+id/goToLogin" android:textStyle="bold"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
