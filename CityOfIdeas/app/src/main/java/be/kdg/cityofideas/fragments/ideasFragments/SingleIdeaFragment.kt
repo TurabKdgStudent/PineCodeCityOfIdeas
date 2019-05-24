@@ -12,6 +12,7 @@ import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 
 import be.kdg.cityofideas.R
@@ -22,6 +23,8 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
+import com.bumptech.glide.load.engine.DiskCacheStrategy
 import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
@@ -43,6 +46,8 @@ class SingleIdeaFragment : Fragment() {
     private lateinit var sharebtn : ImageButton
     private lateinit var likebtn : ImageButton
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
+    private lateinit var circularProgressDrawable : CircularProgressDrawable
+
 
     @Inject
     lateinit var apiService : ApiService
@@ -74,6 +79,7 @@ class SingleIdeaFragment : Fragment() {
         sharebtn = view.findViewById(R.id.shareIdeaButton)
         likebtn = view.findViewById(R.id.LikeButtonSingleIdea)
         swipeRefreshLayout = view.findViewById(R.id.refreshSwipe)
+        circularProgressDrawable = CircularProgressDrawable(this.context!!)
     }
     private fun addEventHandlers(){
         sharebtn.setOnClickListener {
@@ -95,7 +101,12 @@ class SingleIdeaFragment : Fragment() {
         }
     }
     private fun updateFields(){
-        context?.let { cPicasso.getInstance(it) }!!.load("$IMAGE_URL${thisIdea.photo}").fit().into(logo)
+      //  context?.let { cPicasso.getInstance(it) }!!.load("$IMAGE_URL${thisIdea.photo}").fit().into(logo)
+        circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+        Glide.with(context).load("$IMAGE_URL${thisIdea.photo}").diskCacheStrategy(DiskCacheStrategy.ALL).centerCrop().placeholder(circularProgressDrawable).error(R.drawable.ic_broken_image_black_50dp).into(logo)
         titel.text = thisIdea.title
         explanationShort.text = thisIdea.explanationShort
         explanationLong.text = thisIdea.explanationLong

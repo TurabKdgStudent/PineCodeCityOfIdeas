@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 
 import be.kdg.cityofideas.R
 import be.kdg.cityofideas.rest.BASE_URL
@@ -18,6 +19,7 @@ import com.android.volley.RequestQueue
 import com.android.volley.Response
 import com.android.volley.toolbox.JsonObjectRequest
 import com.android.volley.toolbox.Volley
+import com.bumptech.glide.Glide
 import org.json.JSONObject
 
 
@@ -31,8 +33,10 @@ import org.json.JSONObject
       //REST
     private lateinit var phases : ArrayList<Phase>
     private lateinit var requestQueue : RequestQueue
-      private lateinit var thisproject : be.kdg.cityofideas.rest.data.Project
-      private val cPicasso : PicassoTrustAll = PicassoTrustAll()
+    private lateinit var thisproject : be.kdg.cityofideas.rest.data.Project
+    private val cPicasso : PicassoTrustAll = PicassoTrustAll()
+    private lateinit var circularProgressDrawable : CircularProgressDrawable
+
 
 
 
@@ -60,6 +64,11 @@ import org.json.JSONObject
         projectTitle.text = thisproject.title
         explanation.text = thisproject.about
         context?.let { cPicasso.getInstance(it) }!!.load("$IMAGE_URL${thisproject.picture}").fit().into(projectpic)
+        circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+    //    Glide.with(context).load("$IMAGE_URL${thisproject.picture}").centerCrop().placeholder(circularProgressDrawable).error(R.mipmap.i2).centerCrop().into(projectpic)
     }
 
     fun queue(){

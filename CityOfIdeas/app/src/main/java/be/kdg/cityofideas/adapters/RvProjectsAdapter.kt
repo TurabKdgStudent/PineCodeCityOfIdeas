@@ -6,9 +6,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import be.kdg.cityofideas.R
 import be.kdg.cityofideas.rest.IMAGE_URL
 import be.kdg.cityofideas.rest.PicassoTrustAll
+import com.bumptech.glide.Glide
 
 
 class RvProjectsAdapter(
@@ -20,6 +22,8 @@ class RvProjectsAdapter(
 
     private val context : Context = context!!
     private val cPicasso : PicassoTrustAll = PicassoTrustAll()
+    private val circularProgressDrawable = CircularProgressDrawable(context!!)
+
 
 
 
@@ -42,8 +46,13 @@ class RvProjectsAdapter(
 
     override fun onBindViewHolder(holder: RvProjectsAdapter.MyViewHolder, position: Int) {
         val project = projects[position]
-        cPicasso.getInstance(context)!!.load("$IMAGE_URL${project.picture}").fit()
-            .into(holder.logo)
+        /*cPicasso.getInstance(context)!!.load("$IMAGE_URL${project.picture}").fit()
+            .into(holder.logo)*/
+        circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+        Glide.with(context).load("$IMAGE_URL${project.picture}").centerCrop().placeholder(circularProgressDrawable).error(R.mipmap.i2).centerCrop().into(holder.logo)
         holder.titel.text = project.title
         holder.status.text = project.status
         holder.cardview.setOnClickListener {

@@ -1,6 +1,7 @@
 package be.kdg.cityofideas.adapters
 
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -8,10 +9,12 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import be.kdg.cityofideas.R
 import be.kdg.cityofideas.fragments.ideasFragments.IdeasFragment
 import be.kdg.cityofideas.rest.IMAGE_URL
 import be.kdg.cityofideas.rest.PicassoTrustAll
+import com.bumptech.glide.Glide
 
 class RvIdeasAdapter(
     context: Context?,
@@ -23,6 +26,9 @@ class RvIdeasAdapter(
 
     private val cPicasso : PicassoTrustAll = PicassoTrustAll()
     private val context : Context = context!!
+
+    val circularProgressDrawable = CircularProgressDrawable(context!!)
+
 
 
     class MyViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
@@ -45,17 +51,18 @@ class RvIdeasAdapter(
 
 
     override fun onBindViewHolder(holder: RvIdeasAdapter.MyViewHolder, position: Int) {
-        var idea = ideas[position]
+        val idea = ideas[position]
         holder.titel.text = idea.title
         holder.numberComments.text = idea.numberOfComments
         holder.numberLikes.text = idea.numberOfLikes
         holder.explanation.text = idea.explanationShort
-        if (idea.photo!!.isEmpty()){
-            holder.logo.setImageResource(R.mipmap.pinecodelogo2)
-        }else{
-            cPicasso.getInstance(context)!!.load("$IMAGE_URL${idea.photo}").fit().into(holder.logo)
-        }
-        cPicasso.getInstance(context)!!.load("$IMAGE_URL${idea.photo}").fit().into(holder.logo)
+
+        circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+        Glide.with(context).load("$IMAGE_URL${idea.photo}").centerCrop().placeholder(circularProgressDrawable).error(R.mipmap.i1).centerCrop().into(holder.logo)
+     //   cPicasso.getInstance(context)!!.load("$IMAGE_URL${idea.photo}").fit().into(holder.logo)
         holder.cardview.setOnClickListener {
             listener.onIdeaSelected(idea.id!!.toInt())
         }

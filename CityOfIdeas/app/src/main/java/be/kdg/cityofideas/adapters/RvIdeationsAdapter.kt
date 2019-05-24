@@ -7,9 +7,11 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import be.kdg.cityofideas.R
 import be.kdg.cityofideas.rest.IMAGE_URL
 import be.kdg.cityofideas.rest.PicassoTrustAll
+import com.bumptech.glide.Glide
 
 class RvIdeationsAdapter(context: Context?,
                          private val listener: OnIdeationSelectedListener,
@@ -19,6 +21,8 @@ class RvIdeationsAdapter(context: Context?,
 
     private val context : Context = context!!
     private val cPicasso : PicassoTrustAll = PicassoTrustAll()
+    private val circularProgressDrawable = CircularProgressDrawable(context!!)
+
 
 
     class MyViewHolder(view: View) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
@@ -39,7 +43,12 @@ class RvIdeationsAdapter(context: Context?,
 
     override fun onBindViewHolder(holder: RvIdeationsAdapter.MyViewHolder, position: Int) {
         val ideation = ideations[position]
-        cPicasso.getInstance(context)!!.load("$IMAGE_URL${ideation.picture}").fit().into(holder.logo)
+   //     cPicasso.getInstance(context)!!.load("$IMAGE_URL${ideation.picture}").fit().into(holder.logo)
+        circularProgressDrawable.setStyle(CircularProgressDrawable.LARGE)
+        circularProgressDrawable.strokeWidth = 5f
+        circularProgressDrawable.centerRadius = 30f
+        circularProgressDrawable.start()
+        Glide.with(context).load("$IMAGE_URL${ideation.picture}").centerCrop().placeholder(circularProgressDrawable).error(R.mipmap.i2).centerCrop().into(holder.logo)
         holder.titel.text = ideation.question
         holder.explanation.text = ideation.about
         holder.numberLikes.text = ideation.numberOfLikes
