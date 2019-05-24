@@ -15,6 +15,7 @@ import be.kdg.cityofideas.drawer.PlatformFragment
 import be.kdg.cityofideas.rest.APIUtils
 import be.kdg.cityofideas.rest.ApiService
 import com.auth0.android.jwt.JWT
+import kotlinx.android.synthetic.main.nav_header.*
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -29,6 +30,7 @@ class LoginFragment : Fragment() {
     private lateinit var email: AutoCompleteTextView
     private lateinit var pwd: EditText
     private lateinit var loginbtn: Button
+    var username = ""
 
     @Inject
     lateinit var apiService : ApiService
@@ -55,6 +57,7 @@ class LoginFragment : Fragment() {
         email = view.findViewById(R.id.email)
         pwd = view.findViewById(R.id.password)
         loginbtn = view.findViewById(R.id.LoginButton)
+
 
 //        drawer.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
 
@@ -98,6 +101,9 @@ class LoginFragment : Fragment() {
                     val subscriptionMetaData = parsedJwt.getClaim("sub")
                     val parsedValue = subscriptionMetaData.asString()
                     println(parsedValue)
+                    username = parsedValue!!
+                    sharedPref.edit().putString("username",username).apply()
+                    activity!!.usernameNavhead.text = sharedPref.getString("username","")
                     Toast.makeText(context,"U bent ingelogd, welkom $parsedValue!",Toast.LENGTH_LONG).show()
                     fragmentManager!!.beginTransaction().setCustomAnimations(R.anim.right_in,R.anim.left_out,R.anim.left_in_back,R.anim.left_out_back)
                         .replace(R.id.fragment_container, PlatformFragment()).addToBackStack("").commit()

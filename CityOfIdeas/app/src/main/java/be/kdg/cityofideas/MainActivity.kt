@@ -12,6 +12,7 @@ import androidx.appcompat.widget.Toolbar
 import android.view.MenuItem
 import android.view.View
 import android.view.inputmethod.InputMethodManager
+import android.widget.TextView
 import android.widget.Toast
 import be.kdg.cityofideas.adapters.*
 import be.kdg.cityofideas.drawer.AboutFragment
@@ -57,6 +58,8 @@ class MainActivity : AppCompatActivity(),
     private lateinit var drawer : DrawerLayout
     private lateinit var toggle : ActionBarDrawerToggle
     private lateinit var navigationView : NavigationView
+    private lateinit var headerView : View
+
     private var count : Int = supportFragmentManager.backStackEntryCount
 
 
@@ -74,19 +77,23 @@ class MainActivity : AppCompatActivity(),
         }
     }
 
-    private fun initialiseViews(){
+    override fun onResume() {
+        super.onResume()
+        val sharedPref = this.getPreferences(Context.MODE_PRIVATE)
+        headerView = navigationView.getHeaderView(0)
+        val navUserName =  headerView.findViewById<TextView>(R.id.usernameNavhead)
+        navUserName.text = sharedPref.getString("username","")
+    }
 
+    private fun initialiseViews(){
         //nav & default Toolbar
         navigationView = findViewById(R.id.nav_view)
         toolbar = findViewById(R.id.toolbar)
         setSupportActionBar(toolbar)
-
         drawer = drawer_layout
-
         toggle  = ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close)
         drawer.addDrawerListener(toggle)
         toggle.syncState()
-
     }
 
     private fun addEventHandlers(){

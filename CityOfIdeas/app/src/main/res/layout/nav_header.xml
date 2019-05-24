@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="300dp"
-              android:orientation="vertical"
-              android:background="@color/colorSecondary"
-              android:gravity="bottom"
-              android:padding="16dp"
-              android:theme="@style/ThemeOverlay.AppCompat.Dark"
->
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                                   xmlns:app="http://schemas.android.com/apk/res-auto"
+                                                   xmlns:tools="http://schemas.android.com/tools"
+                                                   android:layout_width="match_parent"
+                                                   android:layout_height="300dp"
+                                                   android:background="@color/colorSecondary"
+                                                   android:gravity="bottom"
+                                                   android:theme="@style/ThemeOverlay.AppCompat.Dark"
+                                                   android:id="@+id/linearLayout">
     <de.hdodenhof.circleimageview.CircleImageView
             xmlns:app="http://schemas.android.com/apk/res-auto"
             android:layout_width="100dp"
@@ -17,16 +17,29 @@
             android:adjustViewBounds="false"
             app:civ_border_color="@color/colorAccent"
             app:civ_border_width="3dp"
-            android:foregroundGravity="fill_horizontal|top" android:layout_gravity="center|center_horizontal|top"
-            android:layout_marginBottom="50dp"/>
+            android:foregroundGravity="fill_horizontal|top"
+            app:layout_constraintEnd_toEndOf="parent" android:layout_marginBottom="8dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginEnd="8dp" android:layout_marginStart="8dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginTop="8dp"
+            app:layout_constraintTop_toTopOf="parent"/>
     <TextView android:layout_width="wrap_content"
               android:layout_height="wrap_content"
               android:paddingTop="8dp"
               android:text="@string/app_name"
               android:textAppearance="@style/Base.TextAppearance.AppCompat.Title"
-              android:textColor="@color/colorPrimaryLight" android:textStyle="bold"/>
+              android:textColor="@color/colorPrimaryLight" android:textStyle="bold"
+              android:id="@+id/textView" app:layout_constraintStart_toStartOf="parent"
+              android:layout_marginStart="8dp"
+              android:layout_marginTop="24dp" app:layout_constraintTop_toBottomOf="@+id/Drawer_Logo"/>
+    <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/usernameNavhead" app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintTop_toBottomOf="@+id/textView"
+            android:layout_marginTop="8dp" android:textColor="@android:color/white"
+            tools:text="@string/superadmin" android:layout_marginBottom="16dp"
+            app:layout_constraintBottom_toBottomOf="parent" android:textSize="12sp"/>
 
 
-
-
-</LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
