@@ -12,9 +12,14 @@ import okhttp3.ResponseBody
 import org.json.JSONArray
 import retrofit2.http.POST
 
-
+/*Test-Site die ook online staat, dit is ook de laatste versie van onze website maar werd enkel gebruikt bij het developen van de app
 const val BASE_URL = "https://34.76.13.110/Graphql/Post"
 const val IMAGE_URL = "https://34.76.13.110"
+*/
+
+//Officiele site gedeployed voor de test op 29/05/2019
+const val BASE_URL = "https://34.76.57.106/Graphql/Post"
+const val IMAGE_URL = "https://34.76.57.106"
 
 interface ApiService {
 
