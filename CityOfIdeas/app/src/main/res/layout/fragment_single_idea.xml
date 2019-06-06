@@ -58,7 +58,7 @@
                                                         android:layout_height="wrap_content"
                                                         android:id="@+id/guideline12"
                                                         android:orientation="horizontal"
-                                                        app:layout_constraintGuide_begin="614dp"/>
+                                                        app:layout_constraintGuide_percent="0.72"/>
             <ImageButton
                     android:layout_width="50dp"
                     android:layout_height="50dp"
@@ -134,8 +134,8 @@
             <androidx.constraintlayout.widget.Guideline android:layout_width="wrap_content"
                                                         android:layout_height="wrap_content"
                                                         android:id="@+id/guideline23"
-                                                        app:layout_constraintGuide_begin="470dp"
-                                                        android:orientation="horizontal"/>
+                                                        android:orientation="horizontal"
+                                                        app:layout_constraintGuide_percent="0.5595092"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
 
     </ScrollView>
